@@ -5,10 +5,9 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "webpack || echo not ok",
+    "build": "webpack",
     "test": "jest",
-    "prerelease": "npm run build && npm test",
-    "release": "npm pack"
+    "prepare": "rm -r dist; npm run build && npm test"
   },
   "keywords": [
     "sms",
