@@ -1,4 +1,4 @@
-# Sms length 💌 📏
+# Sms-length 💌 📏
 A simple utility function to understand how many sms will be required to send a text message via SMS. Largely inspired by sms-counter.
 
 ## Installation
