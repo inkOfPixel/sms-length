@@ -13,7 +13,34 @@ test("Single message with only default characters", async () => {
   });
 });
 
-test("Special chars", async () => {
+test("Test all GSM_7BIT chars", async () => {
+  const message =
+    " !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz\n\rABCDEFGHIJKLMNOPQRSTUVWXYZ£¥§¿_ΔΦΓΛΩΠΨΣΘΞèéùìòÇØøÅåÆæßÉÄÖÑÜäöñüà¤¡";
+
+  const response = count(message);
+  expect(response).toEqual({
+    encoding: "GSM_7BIT",
+    length: 127,
+    characterPerMessage: 160,
+    remaining: 33,
+    messages: 1,
+  });
+});
+
+test("Test all GSM_7BIT_EXT chars", async () => {
+  const message = "^{}\\[~]|€";
+
+  const response = count(message);
+  expect(response).toEqual({
+    encoding: "GSM_7BIT_EXT",
+    length: 18,
+    characterPerMessage: 160,
+    remaining: 142,
+    messages: 1,
+  });
+});
+
+test("Special chars are treated as unicode - no shift table are enabled", async () => {
   const message = "Â";
 
   const response = count(message);
