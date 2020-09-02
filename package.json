@@ -1,0 +1,35 @@
+{
+  "name": "sms-length",
+  "version": "0.0.1",
+  "description": "Utility to understand how many sms will be required to send a text string. Largely inspired by sms-counter",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "webpack || echo not ok",
+    "test": "jest",
+    "prerelease": "npm run build && npm test",
+    "release": "npm pack"
+  },
+  "keywords": [
+    "sms",
+    "length",
+    "string",
+    "encoding",
+    "typescript"
+  ],
+  "author": "Federico Badini",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "26.0.12",
+    "@types/node": "14.6.2",
+    "dts-bundle": "0.7.3",
+    "jest": "26.4.2",
+    "ts-jest": "26.3.0",
+    "ts-loader": "8.0.3",
+    "typescript": "4.0.2",
+    "webpack": "4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "2.5.2"
+  },
+  "dependencies": {}
+}
