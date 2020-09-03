@@ -1,7 +1,7 @@
 {
   "name": "sms-length",
   "version": "0.0.2",
-  "description": "Utility to understand how many sms will be required to send a text string. Largely inspired by sms-counter",
+  "description": "A simple utility function to understand how many sms will be required to send a text message via SMS. Largely inspired by sms-counter.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
