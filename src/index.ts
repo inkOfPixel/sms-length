@@ -30,6 +30,12 @@ export const count = (text: string) => {
   }
 
   const messages = Math.ceil(length / characterPerMessage);
+
+  let inCurrentMessage = length;
+  if (messages > 0) {
+    inCurrentMessage = length - characterPerMessage * (messages - 1);
+  }
+
   let remaining = characterPerMessage * messages - length;
   if (remaining === 0 && messages === 0) {
     remaining = characterPerMessage;
@@ -39,6 +45,7 @@ export const count = (text: string) => {
     encoding,
     length,
     characterPerMessage,
+    inCurrentMessage,
     remaining,
     messages,
   };

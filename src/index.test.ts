@@ -8,6 +8,7 @@ test("Single message with only default characters", async () => {
     encoding: "GSM_7BIT",
     length: 14,
     characterPerMessage: 160,
+    inCurrentMessage: 14,
     remaining: 146,
     messages: 1,
   });
@@ -22,6 +23,7 @@ test("Test all GSM_7BIT chars", async () => {
     encoding: "GSM_7BIT",
     length: 127,
     characterPerMessage: 160,
+    inCurrentMessage: 127,
     remaining: 33,
     messages: 1,
   });
@@ -35,6 +37,7 @@ test("Test all GSM_7BIT_EXT chars", async () => {
     encoding: "GSM_7BIT_EXT",
     length: 18,
     characterPerMessage: 160,
+    inCurrentMessage: 18,
     remaining: 142,
     messages: 1,
   });
@@ -48,6 +51,7 @@ test("Special chars are treated as unicode - no shift table are enabled", async 
     encoding: "UTF16",
     length: 1,
     characterPerMessage: 70,
+    inCurrentMessage: 1,
     remaining: 69,
     messages: 1,
   });
@@ -67,6 +71,7 @@ Per Rinunciare https://ysms.me/u/wNT2Bb3`;
     encoding: "GSM_7BIT_EXT",
     length: 307,
     characterPerMessage: 153,
+    inCurrentMessage: 1,
     remaining: 152,
     messages: 3,
   });
