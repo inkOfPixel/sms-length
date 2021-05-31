@@ -64,6 +64,6 @@
     }
   ],
   "prettier": {
-    "endOfLine": "lf"
+    "endOfLine": "auto"
   }
 }
