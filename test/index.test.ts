@@ -1,4 +1,4 @@
-import { count } from "./index";
+import { count } from "../src/index";
 
 test("Single message with only default characters", async () => {
   const message = "simple message";

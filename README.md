@@ -22,8 +22,8 @@ count("This is a simple text message");
 Returns: {
   encoding: "GSM_7BIT",
   length: 29,
-	characterPerMessage: 160,
-	inCurrentMessage: 29,
+  characterPerMessage: 160,
+  inCurrentMessage: 29,
   remaining: 131,
   messages: 1,
 }

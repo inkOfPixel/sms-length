@@ -1,8 +1,10 @@
 type Encoding = "GSM_7BIT" | "GSM_7BIT_EXT" | "UTF16";
 
-const GSM_7BIT_REGEXP = /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&'()*+,\-.\/0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà]*$/;
-const GSM_7BIT_EXT_REGEXP = /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&'()*+,\-.\/0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà^{}\\\[~\]|€]*$/;
-const GSM_7BIT_EXT_CHAR_REGEXP = /^[\^{}\\\[~\]|€]$/;
+const GSM_7BIT_REGEXP =
+  /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà]*$/;
+const GSM_7BIT_EXT_REGEXP =
+  /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà^{}\\[~\]|€]*$/;
+const GSM_7BIT_EXT_CHAR_REGEXP = /^[\^{}\\[~\]|€]$/;
 
 const messageLength: { [key in Encoding]: number } = {
   GSM_7BIT: 160,
