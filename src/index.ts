@@ -1,4 +1,4 @@
-type Encoding = "GSM_7BIT" | "GSM_7BIT_EXT" | "UTF16";
+export type Encoding = "GSM_7BIT" | "GSM_7BIT_EXT" | "UTF16";
 
 const GSM_7BIT_REGEXP =
   /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà]*$/;
