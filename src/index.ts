@@ -7,8 +7,8 @@ const GSM_7BIT_EXT_REGEXP =
 const GSM_7BIT_EXT_CHAR_REGEXP = /^[\^{}\\[~\]|€]$/;
 
 const messageLength: { [key in Encoding]: number } = {
-  GSM_7BIT: 160,
-  GSM_7BIT_EXT: 160,
+  GSM_7BIT: 140,
+  GSM_7BIT_EXT: 140,
   UTF16: 70,
 };
 
