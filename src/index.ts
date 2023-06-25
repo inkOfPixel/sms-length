@@ -65,12 +65,6 @@ const detectEncoding = (text: string): Encoding => {
 };
 
 const countGsm7bitExt = (text: string) => {
-  const extChar = [];
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    if ((char.match(GSM_7BIT_EXT_CHAR_REGEXP) || []).length > 0) {
-      extChar.push(char);
-    }
-  }
-  return extChar.length;
+  const match = text.match(GSM_7BIT_EXT_CHAR_REGEXP);
+  return match ? match.length : 0;
 };
