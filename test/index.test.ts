@@ -2,8 +2,8 @@ import { count } from "../src/index";
 
 test("Single message with only default characters", async () => {
   const message = "simple message";
-
   const response = count(message);
+
   expect(response).toEqual({
     encoding: "GSM_7BIT",
     length: 14,
@@ -17,8 +17,8 @@ test("Single message with only default characters", async () => {
 test("Test all GSM_7BIT chars", async () => {
   const message =
     " !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz\n\rABCDEFGHIJKLMNOPQRSTUVWXYZ£¥§¿_ΔΦΓΛΩΠΨΣΘΞèéùìòÇØøÅåÆæßÉÄÖÑÜäöñüà¤¡";
-
   const response = count(message);
+
   expect(response).toEqual({
     encoding: "GSM_7BIT",
     length: 127,
@@ -31,8 +31,8 @@ test("Test all GSM_7BIT chars", async () => {
 
 test("Test all GSM_7BIT_EXT chars", async () => {
   const message = "^{}\\[~]|€";
-
   const response = count(message);
+
   expect(response).toEqual({
     encoding: "GSM_7BIT_EXT",
     length: 18,
@@ -45,8 +45,8 @@ test("Test all GSM_7BIT_EXT chars", async () => {
 
 test("Special chars are treated as unicode - no shift table are enabled", async () => {
   const message = "Â";
-
   const response = count(message);
+
   expect(response).toEqual({
     encoding: "UTF16",
     length: 1,
@@ -65,8 +65,8 @@ Consegna Gratuita.
 Ordinali Subito su https://ysms.me/u/3IAeLge
 
 Per Rinunciare https://ysms.me/u/wNT2Bb3`;
-
   const response = count(message);
+
   expect(response).toEqual({
     encoding: "GSM_7BIT_EXT",
     length: 307,
