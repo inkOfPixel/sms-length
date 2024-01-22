@@ -35,16 +35,12 @@
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "format": "prettier --write './**/*.ts'"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "4.11.0",
     "eslint-plugin-prettier": "3.4.0",
     "husky": "6.0.0",
     "prettier": "2.3.0",
-    "size-limit": "4.11.0",
     "tsdx": "0.14.1",
     "tslib": "2.2.0",
     "typescript": "4.2.4"
@@ -54,16 +50,6 @@
       "pre-commit": "yarn lint && yarn test"
     }
   },
-  "size-limit": [
-    {
-      "path": "dist/sms-length.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/sms-length.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "prettier": {
     "endOfLine": "auto"
   }
