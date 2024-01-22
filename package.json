@@ -1,7 +1,7 @@
 {
   "name": "sms-length",
   "author": "inkOfPixel srl",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "A simple utility function to understand how many sms will be required to send a text message via SMS. Largely inspired by sms-counter.",
   "keywords": [
@@ -29,41 +29,27 @@
     "node": ">=10"
   },
   "sideEffects": false,
-  "devDependencies": {
-    "@size-limit/preset-small-lib": "4.11.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "husky": "6.0.0",
-    "prettier": "2.3.0",
-    "size-limit": "4.11.0",
-    "tsdx": "0.14.1",
-    "tslib": "2.2.0",
-    "typescript": "4.2.4"
-  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "format": "prettier --write './**/*.ts'"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "3.4.0",
+    "husky": "6.0.0",
+    "prettier": "2.3.0",
+    "tsdx": "0.14.1",
+    "tslib": "2.2.0",
+    "typescript": "4.2.4"
   },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint && yarn test"
     }
   },
-  "size-limit": [
-    {
-      "path": "dist/sms-length.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/sms-length.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "prettier": {
     "endOfLine": "auto"
   }

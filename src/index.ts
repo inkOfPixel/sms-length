@@ -4,7 +4,7 @@ const GSM_7BIT_REGEXP =
   /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà]*$/;
 const GSM_7BIT_EXT_REGEXP =
   /^[@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà^{}\\[~\]|€]*$/;
-const GSM_7BIT_EXT_CHAR_REGEXP = /^[\^{}\\[~\]|€]$/;
+const GSM_7BIT_EXT_CHAR_REGEXP = /[\^{}\\[~\]|€]/g;
 
 const messageLength: { [key in Encoding]: number } = {
   GSM_7BIT: 160,
@@ -20,11 +20,10 @@ const multiMessageLength: { [key in Encoding]: number } = {
 
 export const count = (text: string) => {
   const encoding = detectEncoding(text);
-  let length = text.length;
-
-  if (encoding === "GSM_7BIT_EXT") {
-    length += countGsm7bitExt(text);
-  }
+  const length =
+    encoding === "GSM_7BIT_EXT"
+      ? text.length + (text.match(GSM_7BIT_EXT_CHAR_REGEXP) ?? []).length
+      : text.length;
 
   let characterPerMessage = messageLength[encoding];
   if (length > characterPerMessage) {
@@ -33,10 +32,8 @@ export const count = (text: string) => {
 
   const messages = Math.ceil(length / characterPerMessage);
 
-  let inCurrentMessage = length;
-  if (messages > 0) {
-    inCurrentMessage = length - characterPerMessage * (messages - 1);
-  }
+  const inCurrentMessage =
+    messages > 0 ? length - characterPerMessage * (messages - 1) : length;
 
   let remaining = characterPerMessage * messages - length;
   if (remaining === 0 && messages === 0) {
@@ -54,23 +51,13 @@ export const count = (text: string) => {
 };
 
 const detectEncoding = (text: string): Encoding => {
-  switch (false) {
-    case text.match(GSM_7BIT_REGEXP) == null:
-      return "GSM_7BIT";
-    case text.match(GSM_7BIT_EXT_REGEXP) == null:
-      return "GSM_7BIT_EXT";
-    default:
-      return "UTF16";
+  if (text.match(GSM_7BIT_REGEXP) != null) {
+    return "GSM_7BIT";
   }
-};
 
-const countGsm7bitExt = (text: string) => {
-  const extChar = [];
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    if ((char.match(GSM_7BIT_EXT_CHAR_REGEXP) || []).length > 0) {
-      extChar.push(char);
-    }
+  if (text.match(GSM_7BIT_EXT_REGEXP) != null) {
+    return "GSM_7BIT_EXT";
   }
-  return extChar.length;
+
+  return "UTF16";
 };
