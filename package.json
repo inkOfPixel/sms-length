@@ -1,7 +1,7 @@
 {
   "name": "sms-length",
   "author": "inkOfPixel srl",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "license": "MIT",
   "description": "A simple utility function to understand how many sms will be required to send a text message via SMS. Largely inspired by sms-counter.",
   "keywords": [
